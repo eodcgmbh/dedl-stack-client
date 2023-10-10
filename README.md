@@ -1,1 +1,1 @@
-# dedl-stack-client
+# DestinE Data Lake (DEDL) Stack Client

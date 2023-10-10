@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "dedl-stack-client"
+version = "2023.10.1"
+description = "Python client for DEDL Stack services"
+authors = ["Christoph Reimer <christoph.reimer@eodc.eu>"]
+license = "BSD-3-Clause"
+readme = "README.md"
+packages = [{include = "dedl_stack_client"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.12"
+pyjwt = {extras = ["crypto"], version = "^2.8.0"}
+dask-gateway = "^2023.9.0"
+
+
+[tool.poetry.group.development.dependencies]
+black = "^23.9.1"
+pre-commit = "^3.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
