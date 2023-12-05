@@ -7,14 +7,14 @@ class DaskMultiCluster:
     gateway_registry = {
         "central": {
             "name": "Central Site",
-            "address": "https://central.dedl.eodc.eu/dask",
-            "proxy_address": "tcp://dask.central.dedl.eodc.eu:80",
+            "address": "http://dask.central.data.destination-earth.eu",
+            "proxy_address": "tcp://dask.central.data.destination-earth.eu:80",
             "default_config": {"min": 2, "max": 10},
         },
         "lumi": {
             "name": "LUMI Bridge",
-            "address": "https://lumi.dedl.eodc.eu/dask",
-            "proxy_address": "tcp://dask.lumi.dedl.eodc.eu:80",
+            "address": "http://dask.lumi.data.destination-earth.eu",
+            "proxy_address": "tcp://dask.lumi.data.destination-earth.eu:80",
             "default_config": {"min": 2, "max": 10},
         },
     }
