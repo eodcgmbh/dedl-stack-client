@@ -9,13 +9,9 @@ from jwt import PyJWKClient, decode
 class DaskOIDC(GatewayAuth):
     def __init__(self, username: str):
         self.username = username
-        self.client_id = "dedl-dask-gateway"
-        self.token_url = (
-            "https://bouncer.eodc.eu/auth/realms/EODC/protocol/openid-connect/token"
-        )
-        self.cert_url = (
-            "https://bouncer.eodc.eu/auth/realms/EODC/protocol/openid-connect/certs"
-        )
+        self.client_id = "dedl-stack-public-client"
+        self.token_url = "https://identity.data.destination-earth.eu/auth/realms/dedl/protocol/openid-connect/token"
+        self.cert_url = "https://identity.data.destination-earth.eu/auth/realms/dedl/protocol/openid-connect/certs"
         self.token = self.get_token()
         self.access_token_decoded = self.decode_access_token()
 
@@ -32,7 +28,11 @@ class DaskOIDC(GatewayAuth):
         jwks_client = PyJWKClient(self.cert_url)
         signing_key = jwks_client.get_signing_key_from_jwt(self.token["access_token"])
         return decode(
-            self.token["access_token"], signing_key.key, algorithms=["RS256"], leeway=10
+            self.token["access_token"],
+            signing_key.key,
+            audience="account",
+            algorithms=["RS256"],
+            leeway=10,
         )
 
     def is_token_expired(self):
